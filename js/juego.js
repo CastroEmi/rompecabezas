@@ -151,6 +151,20 @@ function moverEnDireccion(direccion){
 }
 
 
+// Funcion reiniciar juego. Muestra un modal con un texto, al hacer click en el modal éste se cierra y vuelve a mezclar las piezas.
+function reiniciar () {
+ var boton = document.querySelector("#reset-button");
+ var modal = document.getElementById('modalAbandono');
+ boton.addEventListener('click', function () {
+   modal.style.display = "block";
+ });
+
+ modal.onclick = function() {
+     modal.style.display = "none";
+     mezclarPiezas(50);
+ }
+}
+
 
 // Extras, ya vienen dadas
 
@@ -164,6 +178,8 @@ function mezclarPiezas(veces){
     mezclarPiezas(veces-1);
   },100);
 }
+
+
 
 function capturarTeclas(){
   document.body.onkeydown = (function(evento) {
@@ -181,19 +197,6 @@ function capturarTeclas(){
   })
 }
 
- // Funcion reiniciar juego. Muestra un modal con un texto, al hacer click en el modal éste se cierra y vuelve a mezclar las piezas.
-function reiniciar () {
-  var boton = document.querySelector("#reset-button");
-  var modal = document.getElementById('modalAbandono');
-  boton.addEventListener('click', function () {
-    modal.style.display = "block";
-  });
-
-  modal.onclick = function() {
-      modal.style.display = "none";
-      mezclarPiezas(50);
-  }
-}
 
 
 function iniciar(){
