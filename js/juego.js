@@ -6,13 +6,13 @@ var grilla = [
   [7, 8, 9]
 ];
 
-// Ac&aacute; vamos a ir guardando la posición vacía
+// Acá vamos a ir guardando la posición vacía
 var posicionVacia = {
   fila:2,
-  columna:2
+  columna:0
 };
 
-// Esta función va a chequear si el Rompecabezas est&aacute; en la posición ganadora
+// Esta función va a chequear si el Rompecabezas está en la posición ganadora
 function chequearSiGano(){
 
 var contador = 0;
@@ -39,7 +39,32 @@ var contador = 0;
 // la hacen los alumnos, pueden mostrar el cartel como prefieran. Pero es importante que usen
 // esta función
 function mostrarCartelGanador(){
-  alert("¡Felicitaciones! Ganaste :)");
+  // Seleccionar el modal
+  var modal = document.getElementById('modalGanaste');
+  var span = document.getElementsByClassName("close")[0];
+  var boton = document.querySelector("#boton-reiniciar");
+
+      modal.style.display = "block";
+
+  // Cuando el usuario hace click en <span> (x), cierra el modal
+  span.onclick = function() {
+      modal.style.display = "none";
+  }
+
+  // Cuando el usuario clickea el boton reiniciar, cierra el modal y reinicia el juego
+
+  boton.addEventListener('click', function () {
+    modal.style.display = "none";
+    mezclarPiezas(50);
+  });
+
+  // Cuando el usuario hace click fuera del modal, lo cierra
+  window.onclick = function(event) {
+      if (event.target == modal) {
+          modal.style.display = "none";
+      }
+  }
+
 }
 
 // Intercambia posiciones grilla y en el DOM
@@ -87,10 +112,8 @@ function posicionValida(fila, columna){
   }
 }
 
-// Movimiento de fichas, en este caso la que se mueve es la blanca intercambiando
-// su posición con otro elemento
+// Movimiento de fichas, en este caso la que se mueve es la blanca intercambiando su posición con otro elemento
 function moverEnDireccion(direccion){
-  // debugger;
   var nuevaFilaPiezaVacia;
   var nuevaColumnaPiezaVacia;
 
@@ -132,9 +155,9 @@ function moverEnDireccion(direccion){
 // Extras, ya vienen dadas
 
 function mezclarPiezas(veces){
-  if(veces<=0){return;}
+  if(veces <= 0){return;}
   var direcciones = [40, 38, 39, 37];
-  var direccion = direcciones[Math.floor(Math.random()*direcciones.length)];
+  var direccion = direcciones[Math.floor(Math.random()* direcciones.length)];
   moverEnDireccion(direccion);
 
   setTimeout(function(){
@@ -158,9 +181,25 @@ function capturarTeclas(){
   })
 }
 
+ // Funcion reiniciar juego. Muestra un modal con un texto, al hacer click en el modal éste se cierra y vuelve a mezclar las piezas.
+function reiniciar () {
+  var boton = document.querySelector("#reset-button");
+  var modal = document.getElementById('modalAbandono');
+  boton.addEventListener('click', function () {
+    modal.style.display = "block";
+  });
+
+  modal.onclick = function() {
+      modal.style.display = "none";
+      mezclarPiezas(50);
+  }
+}
+
+
 function iniciar(){
-  mezclarPiezas(60);
+  mezclarPiezas(50);
   capturarTeclas();
+  reiniciar();
 }
 
 
