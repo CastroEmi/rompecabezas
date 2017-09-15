@@ -6,10 +6,8 @@ body {
   width: 940px;
   margin: 5% auto;
   min-height: 100%;
-  background-image: url(../images/randm.jpg);
-  background-size: contain;
+  background-image: url(../images/adventure.jpg);
 }
-
 ul {
   padding-left: 0;
   list-style: none;
@@ -31,14 +29,10 @@ li::before {
   background: #FFF;
   padding: 30px;
   color: #000;
-  width: 40%;
-}
-
-.col-60 {
-  width: 60%;
 }
 
 #juego div {
+
   text-align: center;
   animation: fadein 2s;
 }
@@ -56,7 +50,7 @@ li::before {
 }
 
 #juego .pieza {
-  float: right;
+  float: left;
   width: 199px;
   height: 199px;
   border: 1px solid #000;
