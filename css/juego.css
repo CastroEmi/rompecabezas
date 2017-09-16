@@ -71,7 +71,6 @@ li::before {
 .button {
   outline: none;
   margin: 0 auto;
-  width: 100%;
   font-size: 1.3rem;
   margin-top: 2.5rem;
   padding: .7rem 1.5rem;
@@ -80,19 +79,23 @@ li::before {
   border: none;
   color: white;
   border-radius: 12px;
-  float: left;
 }
 
 button#start-button.button {
   background: linear-gradient(to left,#fe344e,#ff7250);
   display: inline-block;
-  /*padding: 1rem 3rem;*/
+  width: 100%;
 }
 
 button#reset-button.button {
   background: linear-gradient(to left,#084978,#1d98ad);
   display: none;
-  /*padding: 1rem 1.5rem;*/
+  width: 100%;
+}
+
+button#boton-reiniciar.button {
+  background: linear-gradient(to left,#fe344e,#ff7250);
+  width: 50%;
 }
 
 /* Modal (background) */
@@ -105,7 +108,6 @@ button#reset-button.button {
     width: 100%;
     height: 100%;
     overflow: auto;
-    /*background-color: rgb(0,0,0);*/
     background-color: rgba(0,0,0,0.4);
 }
 
