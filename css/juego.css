@@ -69,18 +69,30 @@ li::before {
 }
 
 .button {
-  background-color: #b33434;
   outline: none;
-  padding: 1rem 1.5rem;
-  display: block;
   margin: 0 auto;
-  font-size: 1.4rem;
+  width: 100%;
+  font-size: 1.3rem;
   margin-top: 2.5rem;
+  padding: .7rem 1.5rem;
   cursor: pointer;
   font-weight: bolder;
   border: none;
   color: white;
-  border-radius: 5px;
+  border-radius: 12px;
+  float: left;
+}
+
+button#start-button.button {
+  background: linear-gradient(to left,#fe344e,#ff7250);
+  display: inline-block;
+  /*padding: 1rem 3rem;*/
+}
+
+button#reset-button.button {
+  background: linear-gradient(to left,#084978,#1d98ad);
+  display: none;
+  /*padding: 1rem 1.5rem;*/
 }
 
 /* Modal (background) */

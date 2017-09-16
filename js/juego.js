@@ -166,6 +166,19 @@ function reiniciar () {
 }
 
 
+// Funcion Start. Al presionar el botón Iniciar, las piezas se mezclan y el juego comienza. El boton Iniciar desaparece y es reemplazado por el boton Me rindo, que reinicia el juego.
+function start () {
+  var boton = document.querySelector("#start-button");
+  var boton2 = document.querySelector("#reset-button");
+
+  boton.addEventListener('click', function () {
+    boton.style.display = "none";
+    mezclarPiezas(50);
+    boton2.style.display = "block";
+  })
+}
+
+
 // Extras, ya vienen dadas
 
 function mezclarPiezas(veces){
@@ -200,7 +213,7 @@ function capturarTeclas(){
 
 
 function iniciar(){
-  mezclarPiezas(50);
+  start();
   capturarTeclas();
   reiniciar();
 }
