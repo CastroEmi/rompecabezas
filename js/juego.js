@@ -14,26 +14,21 @@ var posicionVacia = {
 
 // Esta función va a chequear si el Rompecabezas está en la posición ganadora
 function chequearSiGano(){
+    // guardo la cantidad de filas de la grilla en una variable
+    var cantidadFilas = grilla.length;
+    var cantidadColumnas = grilla[0].length;
+    var contador = 0;
 
-var contador = 0;
-
-  for (var x = 0; x < grilla.length; x++) {
-  var filas = grilla[x];
-
-    for (var y = 0; y < filas.length; y++) {
-      var posicion = grilla[x][y];
-
-      contador++ ;
-
-      if (grilla[x][y] !== contador) {
-        return false;
-      }
-
+    // recorro cada fila columna por columna chequeando el orden de sus elementos
+    for (var x = 0; x < cantidadColumnas; x++) {
+      for (var y = 0; y < cantidadFilas; y++) {
+        var posicion = grilla[x][y];
+        contador++ ;
+        if(posicion !== contador) return false;
       }
     }
     return true;
   }
-
 
 
 // la hacen los alumnos, pueden mostrar el cartel como prefieran. Pero es importante que usen
@@ -105,11 +100,7 @@ function actualizarPosicionVacia(nuevaFila,nuevaColumna){
 
 // Para chequear si la posicón está dentro de la grilla.
 function posicionValida(fila, columna){
-  if (fila >= 0 && fila <= 2 && columna >= 0 && columna <= 2) {
-    return true;
-  } else {
-    return false;
-  }
+  return ((fila >= 0 & columna >= 0) && (fila <= 2 & columna <= 2));
 }
 
 // Movimiento de fichas, en este caso la que se mueve es la blanca intercambiando su posición con otro elemento
@@ -119,25 +110,25 @@ function moverEnDireccion(direccion){
 
   // Intercambia pieza blanca con la pieza que está arriba suyo
   if(direccion == 40){
-    nuevaFilaPiezaVacia = posicionVacia.fila+1;
+    nuevaFilaPiezaVacia = posicionVacia.fila-1;
     nuevaColumnaPiezaVacia = posicionVacia.columna;
   }
   // Intercambia pieza blanca con la pieza que está abajo suyo
   else if (direccion == 38) {
-    nuevaFilaPiezaVacia = posicionVacia.fila-1;
+    nuevaFilaPiezaVacia = posicionVacia.fila+1;
     nuevaColumnaPiezaVacia = posicionVacia.columna;
 
   }
   // Intercambia pieza blanca con la pieza que está a su izq
   else if (direccion == 39) {
     nuevaFilaPiezaVacia = posicionVacia.fila;
-    nuevaColumnaPiezaVacia = posicionVacia.columna+1;
+    nuevaColumnaPiezaVacia = posicionVacia.columna-1;
 
   }
   // Intercambia pieza blanca con la pieza que está a su der
   else if (direccion == 37) {
     nuevaFilaPiezaVacia = posicionVacia.fila;
-    nuevaColumnaPiezaVacia = posicionVacia.columna-1;
+    nuevaColumnaPiezaVacia = posicionVacia.columna+1;
 
   }
 
